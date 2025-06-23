@@ -2,6 +2,7 @@
 // @ts-nocheck
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
@@ -11,6 +12,7 @@ interface AuthFormProps {
 }
 
 export default function AuthForm({ isLogin = false }: AuthFormProps) {
+  const router = useRouter();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -51,7 +53,8 @@ export default function AuthForm({ isLogin = false }: AuthFormProps) {
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
       // Submit logic here
-      alert(isLogin ? "Login successful!" : "Signup successful!");
+      // alert(isLogin ? "Login successful!" : "Signup successful!");
+      router.push("/dashboard");
     }
   };
 
