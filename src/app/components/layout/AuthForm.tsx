@@ -68,25 +68,38 @@ export default function AuthForm({ isLogin = false }: AuthFormProps) {
   }}
 >
   {/* Left Panel */}
-<div className="w-full md:w-[40%] h-[50vh] md:h-screen flex flex-col justify-center items-center px-6 md:px-20 py-6 md:py-0">
+<div className="hidden md:flex w-full md:w-[50%] h-screen md:h-screen flex flex-col justify-center items-center px-6 md:px-20 py-6 md:py-0">
   <img src="/images/logo.svg" alt="Nextun Logo" className="w-40 mb-1 self-start" />
-  <img src="/images/auth.png" alt="auth chart" className="w-[85vw] h-full object-contain"/>
+  <img src="/images/auth.png" alt="auth chart" className="w-[140%] max-w-[800px] h-auto object-contain"/>
 </div>
 
 
   {/* Right Panel */}
-  <div className="w-full md:w-[60%] h-full flex items-center px-4 md:px-12 py-6 md:py-0">
-  <Card className="px-12 py-6 bg-[#FAFAFE] border-none shadow-none rounded-3xl w-[720px] max-w-full">
+  <div className="w-full md:w-[60%] h-full flex items-center justify-center px-4 md:px-12 py-6 md:py-0">
+  <Card className="px-18 py-18 bg-[#FAFAFE] border-none shadow-none rounded-3xl w-full max-w-[640px]">
+    <div className="flex md:hidden justify-center">
+  <img src="/images/logo.svg" alt="Nextun Logo" className="w-28 mb-4" />
+  </div>
     <div className="space-y-8">
 
-      <h2 className="text-3xl font-serif  text-center leading-tight">
-        {isLogin ? "Login to Your Nextun Account" : "Create Your Nextun Account"}
+      <h2 className="text-4xl md:text-4xl font-serif text-center leading-tight">
+        {isLogin ? (
+        <>
+          Login to <br />
+          Your Nextun Account
+        </>
+        ) : (
+        <>
+          Create Your Nextun Account
+        </>
+        )}
       </h2>
+
 
       <form className="space-y-5 font-body" onSubmit={handleSubmit} noValidate>
         {/* Email */}
         <div>
-          <label className="block text-lg font-medium mb-3">Email</label>
+          <label className="block text-lg font-small mb-3">Email</label>
           <Input
             type="email"
             placeholder="Enter your email address"
@@ -99,7 +112,7 @@ export default function AuthForm({ isLogin = false }: AuthFormProps) {
         </div>
         {/* Password */}
         <div className="relative">
-          <label className="block text-lg font-medium mb-2">
+          <label className="block text-lg font-small mb-2">
             {isLogin ? "Password" : "Create Password"}
           </label>
           <Input
@@ -126,7 +139,7 @@ export default function AuthForm({ isLogin = false }: AuthFormProps) {
         {/* Confirm Password */}
         {!isLogin && (
           <div className="relative">
-            <label className="block text-lg font-medium mb-2">Confirm Password</label>
+            <label className="block text-lg font-small mb-2">Confirm Password</label>
             <Input
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Confirm password"
