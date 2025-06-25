@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const modules = [
 	{
@@ -119,9 +119,16 @@ const modules = [
 	},
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ onCollapse }: { onCollapse?: (collapsed: boolean) => void }) {
 	const pathname = usePathname();
 	const [collapsed, setCollapsed] = useState(false);
+
+	// Notify parent when collapsed state changes
+	useEffect(() => {
+		if (onCollapse) onCollapse(collapsed);
+		// Also emit a custom event for legacy support
+		window.dispatchEvent(new CustomEvent('sidebar:collapse', { detail: collapsed }));
+	}, [collapsed, onCollapse]);
 
 	return (
 		<aside
