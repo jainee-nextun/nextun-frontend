@@ -132,7 +132,7 @@ export default function Sidebar({ onCollapse }: { onCollapse?: (collapsed: boole
 
 	return (
 		<aside
-			className={`h-screen bg-[#0B1742] flex flex-col justify-between py-8 px-4 fixed left-0 top-0 z-40 transition-all duration-300 ${
+			className={`h-screen bg-[#162032] flex flex-col justify-between py-8 px-4 fixed left-0 top-0 z-40 transition-all duration-300 ${
 				collapsed ? "w-20" : "w-64"
 			}`}
 		>
@@ -181,7 +181,7 @@ export default function Sidebar({ onCollapse }: { onCollapse?: (collapsed: boole
 									href={mod.path}
 									className={`flex items-center gap-3 px-4 py-3 rounded-lg transition font-normal text-base hover:bg-[#1A2552] ${
 										pathname === mod.path
-											? "bg-[#1A2552] text-white"
+											? "bg-[#252e54] text-white"
 											: "text-[#B0B8D1]"
 									} ${collapsed ? "justify-center px-0" : ""}`}
 									style={{ fontFamily: 'Inter, sans-serif' }}

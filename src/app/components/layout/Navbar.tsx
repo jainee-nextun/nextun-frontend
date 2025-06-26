@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
   });
 
   return (
-    <div className="w-full flex justify-between items-center px-6 py-4 border-b bg-white dark:bg-[#0D1B47] shadow-sm">
+    <div className="w-full flex justify-between items-center px-6 py-4 border-b bg-white dark:bg-[#1E293B] shadow-sm">
       <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{heading}</h1>
 
       <div className="flex items-center gap-6">
@@ -57,19 +57,19 @@ const Navbar: React.FC = () => {
 
         {/* Custom Toggle */}
         <div
-          className="w-[90px] h-[50px] bg-[#f5f7fa] dark:bg-[#E5F0FB] rounded-full flex items-center justify-between px-1 cursor-pointer transition-all duration-300"
+          className="w-[90px] h-[50px] bg-[#f5f7fa] dark:bg-[#2e3551] rounded-full flex items-center justify-between px-1 cursor-pointer transition-all duration-300"
           onClick={toggleTheme}
         >
           <div
             className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
-              !isDark ? "bg-[#0D1B47] text-white" : ""
+              !isDark ? "bg-[#1E293B] text-white" : ""
             }`}
           >
             <Sun size={22} />
           </div>
           <div
             className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
-              isDark ? "bg-[#0D1B47] text-white" : ""
+              isDark ? "bg-[#1E293B] text-white" : ""
             }`}
           >
             <Moon size={22} />
