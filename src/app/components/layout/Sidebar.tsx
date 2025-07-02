@@ -119,9 +119,24 @@ const modules = [
 	},
 ];
 
+
 export default function Sidebar({ onCollapse }: { onCollapse?: (collapsed: boolean) => void }) {
 	const pathname = usePathname();
 	const [collapsed, setCollapsed] = useState(false);
+
+	// Collapse sidebar on small screens (responsive)
+	useEffect(() => {
+		const handleResize = () => {
+			if (window.innerWidth < 768) {
+				setCollapsed(true);
+			} else {
+				setCollapsed(false);
+			}
+		};
+		handleResize(); // Set initial state
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
 
 	// Notify parent when collapsed state changes
 	useEffect(() => {
