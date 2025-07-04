@@ -53,12 +53,12 @@ const page = () => {
   return (
     <div className="flex min-h-screen font-inter">
       <SidebarWithCollapseSync onCollapse={setSidebarCollapsed} />
-      <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarCollapsed ? 'ml-20' : 'ml-64'}`}> 
+      <div className={`flex-1 flex flex-col w-0 min-w-0 transition-all duration-300 ${sidebarCollapsed ? 'ml-20' : 'ml-64'}`}>
         <Navbar />
-        <main className="flex-1 bg-[#FAFAFE] dark:bg-[#0f172a] p-8 overflow-auto"> 
+       <main className="flex-1 bg-[#FAFAFE] dark:bg-[#0f172a] p-4 sm:p-8 overflow-x-hidden">
           <div className="bg-white dark:bg-[#1E293B] rounded-lg shadow-sm py-4 mt-4">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4 px-4">
-            <div className="relative w-full sm:w-auto dark:bg-[#1E293B]" style={{ minWidth: 150 }}>
+           <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-4 mb-4 px-4 w-full">
+            <div className="relative w-auto sm:w-auto dark:bg-[#1E293B]" style={{ minWidth: 150 }}>
               <select value={filter} onChange={e => setFilter(e.target.value)}
                 className="border border-gray-400 rounded-full px-7 py-2 bg-white dark:bg-[#1E293B] text-base font-inter appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 w-full pr-10"
               >
@@ -74,7 +74,7 @@ const page = () => {
             </div>
             <button
               onClick={() => setSortAsc(s => !s)}
-              className="border border-gray-400 rounded-full px-7 py-2 bg-white dark:bg-[#293850] text-base font-inter flex items-center gap-2 w-full sm:w-auto"
+              className="border border-gray-400 rounded-full px-7 py-2 bg-white dark:bg-[#293850] text-base font-inter flex items-center gap-2 w-auto"
               style={{ minWidth: 120 }}
             >
               Sort By
@@ -82,7 +82,7 @@ const page = () => {
                 <path d="M7 7l3-3 3 3M7 13l3 3 3-3" stroke="#222" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <button className="sm:ml-auto border border-gray-400 rounded-full px-2 py-1 flex items-center justify-center bg-white dark:bg-[#293850] shadow-none w-full sm:w-auto" aria-label="Tune" style={{minWidth: 36, minHeight: 36, borderWidth: 1.5}}>
+            <button className="sm:ml-auto border border-gray-400 rounded-full px-2 py-1 flex items-center justify-center bg-white dark:bg-[#293850] shadow-none w-auto" aria-label="Tune" style={{minWidth: 36, minHeight: 36, borderWidth: 1.5}}>
               <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="7" y="10" width="18" height="2" rx="1" fill="#222"/>
                 <rect x="11" y="16" width="10" height="2" rx="1" fill="#222"/>
@@ -93,8 +93,8 @@ const page = () => {
               </svg>
             </button>
           </div>
-            <div className="overflow-x-auto dark:bg-[#1E293B] rounded-md">
-              <table className="min-w-full text-sm">
+            <div className="w-full overflow-x-auto dark:bg-[#1E293B] rounded-md sm:rounded-lg max-w-full">
+              <table className="min-w-[750px] w-full text-sm table-auto">
                 <thead className="bg-[#F2F7FF] dark:bg-[#293850] dark:text-white">
                   <tr>
                     <th className="px-2 sm:px-4 py-2 text-left font-medium text-[#0E3D66] dark:text-white text-xs sm:text-sm">Symbol</th>
@@ -121,7 +121,7 @@ const page = () => {
                 </tbody>
               </table>
             </div>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 text-xs sm:text-sm font-semibold px-2 sm:px-4 gap-2 sm:gap-0">
+           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 text-xs sm:text-sm font-semibold px-2 sm:px-4 gap-2 sm:gap-0 overflow-x-auto">
               <span className="block mb-1 sm:mb-0">Showing {((page-1)*pageSize)+1} to {Math.min(page*pageSize, total)} of {total} trades</span>
               <div className="flex items-center border border-gray-300 rounded-sm overflow-hidden bg-white dark:bg-[#293850] w-full sm:w-auto">
                 <button onClick={() => setPage(p => Math.max(1, p-1))} disabled={page === 1} className="px-3 py-1 disabled:opacity-50 bg-white dark:bg-[#293850] dark:text-white border-r border-gray-200">
